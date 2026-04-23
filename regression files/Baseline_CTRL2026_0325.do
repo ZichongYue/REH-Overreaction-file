@@ -102,7 +102,7 @@ replace zDC = 1 if lambda == 0
 gen zDC_lag = L.zDC 
 reghdfe Depvar c.ps##i.zDC_lag ///
 c.logIC_z 1.young 1.middle DHiI ///
-Experienced_inflation_lag liq_lag, ///
+liq_lag, ///
 absorb(panelid) vce(cluster panelid)
 outreg2 using Baseline_CTRL.xls, append dec(3) ///
 ctitle(CFE) keep (ps DHiI 1.zDC_lag c.ps#1.zDC_lag)
@@ -123,7 +123,7 @@ replace FLgroup2 = 1 if FL == 4 | FL == 5 /* Myopic */
 gen FLgroup1_lag = L.FLgroup1
 reghdfe Depvar c.ps##i.FLgroup1_lag ///
 c.logIC_z 1.young 1.middle DHiI ///
-Experienced_inflation_lag liq_lag, ///
+liq_lag, ///
 absorb(panelid) vce(cluster panelid)
 outreg2 using Baseline_CTRL.xls, append dec(3) ///
 ctitle(CFE) keep (ps DHiI 1.FLgroup1_lag c.ps#1.FLgroup1_lag)
@@ -144,7 +144,7 @@ replace SCgroup3 = 1 if SC == 3
 gen SCgroup1_lag = L.SCgroup1
 reghdfe Depvar c.ps##i.SCgroup1_lag ///
 c.logIC_z 1.young 1.middle DHiI ///
-Experienced_inflation_lag liq_lag, ///
+liq_lag, ///
 absorb(panelid) vce(cluster panelid)
 outreg2 using Baseline_CTRL.xls, append dec(3) ///
 ctitle(CFE) keep (ps DHiI 1.SCgroup1_lag c.ps#1.SCgroup1_lag)
@@ -159,7 +159,7 @@ gen price_z_lag = L.price_z
 * Transformed price for risk aversion (Lagged) 
 reghdfe Depvar c.ps##c.price_z_lag ///
 c.logIC_z 1.young 1.middle DHiI ///
-Experienced_inflation_lag liq_lag, ///
+liq_lag, ///
 absorb(panelid) vce(cluster panelid)
 outreg2 using Baseline_CTRL.xls, append dec(3) ///
 ctitle(CFE) keep (ps DHiI price_z_lag c.ps#c.price_z_lag)
